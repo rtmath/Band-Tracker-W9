@@ -15,6 +15,13 @@
         </select>
         <button type="submit" name="button">Delete Venue</button>
     </form>
+
+    OR
+
+    <form action='/venue/delete/all' method="post">
+        <input type="hidden" name="_method" value="DELETE">
+        <button type="submit" name="button">Delete ALL Venues</button>
+    </form>
 </div>
 
 <a class="grey" href="/">Return to home</a>
