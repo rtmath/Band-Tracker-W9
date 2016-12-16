@@ -64,5 +64,39 @@ namespace BandTracker.Objects
 
             return allVenues;
         }
+
+        public void Save()
+        {
+            SqlConnection conn = DB.Connection();
+            conn.Open();
+
+            SqlCommand cmd = new SqlCommand("INSERT INTO venues (name) OUTPUT INSERTED.id VALUES(@VenueName);", conn);
+            SqlParameter nameParam = new SqlParameter("@VenueName", this.Name);
+            cmd.Parameters.Add(nameParam);
+
+            SqlDataReader rdr = cmd.ExecuteReader();
+            while (rdr.Read())
+            {
+                this.Id = rdr.GetInt32(0);
+            }
+
+            if (rdr != null)
+            {
+                rdr.Close();
+            }
+            if (conn != null)
+            {
+                conn.Close();
+            }
+        }
+
+        public static void DeleteAll()
+        {
+            SqlConnection conn = DB.Connection();
+            conn.Open();
+            SqlCommand cmd = new SqlCommand("DELETE FROM venues;", conn);
+            cmd.ExecuteNonQuery();
+            conn.Close();
+        }
     }
 }

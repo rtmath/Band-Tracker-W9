@@ -29,9 +29,21 @@ namespace BandTracker.Tests
       Assert.Equal(testVenue, testVenue2);
     }
 
+    [Fact]
+    public void Test_SavesVenueToDatabase()
+    {
+        Venue testVenue = new Venue("Wonder Ballroom");
+        testVenue.Save();
+
+        List<Venue> result = Venue.GetAll();
+        List<Venue> testList = new List<Venue>{testVenue};
+
+        Assert.Equal(testList, result);
+    }
+
     public void Dispose()
     {
-
+        Venue.DeleteAll();
     }
   }
 }
