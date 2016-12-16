@@ -5,7 +5,15 @@
 <h3>Add new Band:</h3>
 
 <form action="/band/add" method="post">
-    <input type="text" name="new-band" placeholder="Enter band name" required>
+    <label>Enter band name:</label>
+    <input type="text" name="new-band" required>
+    <label>Select a venue:</label>
+    <select name="new-venue">
+        @foreach (var venue in Model)
+        {
+            <option value=@venue.Id>@venue.Name</option>
+        }
+    </select>
     <button type="submit" name="button">Submit</button>
 </form>
 

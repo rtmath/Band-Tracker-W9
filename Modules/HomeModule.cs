@@ -11,7 +11,8 @@ namespace BandTracker.Modules
       Get["/"] = _ => View["index.cshtml"];
       Get["/band/add"] = _ =>
       {
-          return View["new_band.cshtml"];
+          List<Venue> allVenues = Venue.GetAll();
+          return View["new_band.cshtml", allVenues];
       };
       Get["/venue/add"] = _ =>
       {
@@ -21,6 +22,8 @@ namespace BandTracker.Modules
       {
           Band newBand = new Band(Request.Form["new-band"]);
           newBand.Save();
+          Venue selectedVenue = Venue.Find(Request.Form["new-venue"]);
+          newBand.AddVenue(selectedVenue);
           return View["index.cshtml"];
       };
       Post["/venue/add"] = _ =>
