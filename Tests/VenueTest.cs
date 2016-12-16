@@ -15,7 +15,7 @@ namespace BandTracker.Tests
     }
 
     [Fact]
-    public void Test_DBReturnsEmptyAtFirst()
+    public void Test_DatabaseReturnsEmptyAtFirst()
     {
       Assert.Equal(0, Venue.GetAll().Count);
     }
@@ -39,6 +39,30 @@ namespace BandTracker.Tests
         List<Venue> testList = new List<Venue>{testVenue};
 
         Assert.Equal(testList, result);
+    }
+
+    [Fact]
+    public void Test_FindVenueInDatabase()
+    {
+        Venue newVenue = new Venue("Test Venue");
+        newVenue.Save();
+
+        Venue foundVenue = Venue.Find(newVenue.Id);
+
+        Assert.Equal(newVenue, foundVenue);
+    }
+
+    [Fact]
+    public void Test_UpdateVenueInDatabase()
+    {
+        Venue newVenue = new Venue("Vew Nenue");
+        newVenue.Save();
+
+        string newName = "New Venue";
+        newVenue.Update(newName);
+        string result = newVenue.Name;
+
+        Assert.Equal(newName, result);
     }
 
     public void Dispose()
