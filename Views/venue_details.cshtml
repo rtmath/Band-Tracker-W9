@@ -1,0 +1,16 @@
+@{
+  Layout="Shared/_Layout.cshtml";
+}
+
+<h2>@Model["venue"].Name</h2>
+
+<h4>@Model["venue"].Name has hosted the following bands:</h4>
+@foreach (var band in Model["bands"])
+{
+    <li>@band.Name</li>
+}
+
+<br>
+<a href='/venue/add/band/@Model["venue"].Id'>Add a Band to this Venue's show history</a>
+<br>
+<a href="/">Return to home</a>

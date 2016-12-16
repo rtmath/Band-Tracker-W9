@@ -1,0 +1,12 @@
+@{
+  Layout="Shared/_Layout.cshtml";
+}
+
+<h3>Here the bands you have entered:</h3>
+
+@foreach (var band in Model)
+{
+    <li><a href="/band/@band.Id">@band.Name <a href="/band/add/venue/@band.Id">Add a Venue to this Band's show history</a> <a href="">Delete this band</a></li>
+}
+
+<a href="/">Return to home</a>

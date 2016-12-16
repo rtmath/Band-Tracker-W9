@@ -1,0 +1,17 @@
+@{
+  Layout="Shared/_Layout.cshtml";
+}
+
+<h3>Assign a band to @Model["venue"].Name:</h3>
+
+<form action='/venue/add/band/@Model["venue"].Id' method="post">
+    <select name="new-band">
+        @foreach (var band in Model["bands"])
+        {
+            <option value=@band.Id>@band.Name</option>
+        }
+    </select>
+    <button type="submit" name="button">Select Band</button>
+</form>
+
+<a href="/">Return to home</a>

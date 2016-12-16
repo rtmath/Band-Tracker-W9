@@ -1,0 +1,12 @@
+@{
+  Layout="Shared/_Layout.cshtml";
+}
+
+<h3>Here the venues you have created:</h3>
+
+@foreach (var venue in Model)
+{
+    <li><a href="/venue/@venue.Id">@venue.Name <a href="/venue/add/band/@venue.Id">Add a Band to this Venue's show history</a> <a href="">Delete this venue</a></li>
+}
+
+<a href="/">Return to home</a>
