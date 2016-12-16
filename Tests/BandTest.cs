@@ -52,9 +52,28 @@ namespace BandTracker.Tests
         Assert.Equal(newBand, foundBand);
     }
 
+    [Fact]
+    public void Test_RetrievesVenuesFromBand()
+    {
+        Band testBand = new Band("Black Dahlia Murder");
+        testBand.Save();
+        Venue testVenue1 = new Venue("Roseland Theater");
+        testVenue1.Save();
+        Venue testVenue2 = new Venue("Wonder Ballroom");
+        testVenue2.Save();
+
+        testBand.AddVenue(testVenue1);
+        testBand.AddVenue(testVenue2);
+        List<Venue> expected = new List<Venue> { testVenue1, testVenue2 };
+        List<Venue> actual = testBand.GetVenues();
+
+        Assert.Equal(expected, actual);
+    }
+
     public void Dispose()
     {
         Band.DeleteAll();
+        Venue.DeleteAll();
     }
   }
 }
