@@ -105,6 +105,20 @@ namespace BandTracker.Modules
           myDict.Add("bands", venueBands);
           return View["venue_details.cshtml", myDict];
       };
+
+      Get["venue/delete"] = _ =>
+      {
+          List<Venue> allVenues = Venue.GetAll();
+          return View["delete_venue.cshtml", allVenues];
+      };
+
+      Delete["venue/delete"] = _ =>
+      {
+          int selectedId = Request.Form["delete-venue"];
+          Venue.Delete(selectedId);
+          List<Venue> allVenues = Venue.GetAll();
+          return View["delete_venue.cshtml", allVenues];
+      };
     }
   }
 }
