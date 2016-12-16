@@ -147,6 +147,49 @@ namespace BandTracker.Objects
             }
         }
 
+        public void AddBand(Band band)
+        {
+            SqlConnection conn = DB.Connection();
+            conn.Open();
+
+            SqlCommand cmd = new SqlCommand("INSERT INTO bands_venues (band_id, venue_id) VALUES (@BandId, @VenueId);", conn);
+            SqlParameter bandParam = new SqlParameter("@BandId", band.Id);
+            SqlParameter venueParam = new SqlParameter("@VenueId", this.Id);
+            cmd.Parameters.Add(bandParam);
+            cmd.Parameters.Add(venueParam);
+            cmd.ExecuteNonQuery();
+        }
+
+        public List<Band> GetBands()
+        {
+            SqlConnection conn = DB.Connection();
+            conn.Open();
+
+            SqlCommand cmd = new SqlCommand("SELECT bands.* FROM bands_venues JOIN bands ON (bands_venues.band_id = bands.id) WHERE bands_venues.venue_id = @VenueId;", conn);
+            SqlParameter idParam = new SqlParameter("@VenueId", this.Id);
+            cmd.Parameters.Add(idParam);
+
+            List<Band> returnedBands = new List<Band>{};
+            SqlDataReader rdr = cmd.ExecuteReader();
+            while (rdr.Read())
+            {
+                int id = rdr.GetInt32(0);
+                string name = rdr.GetString(1);
+                Band result = new Band(name, id);
+                returnedBands.Add(result);
+            }
+
+            if (rdr != null)
+            {
+                rdr.Close();
+            }
+            if (conn != null)
+            {
+                conn.Close();
+            }
+            return returnedBands;
+        }
+
         public static void Delete(int id)
         {
             SqlConnection conn = DB.Connection();

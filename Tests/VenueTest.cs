@@ -65,7 +65,8 @@ namespace BandTracker.Tests
         Assert.Equal(newName, result);
     }
 
-    [Fact]public void Test_DeleteSingleVenueInDatabase()
+    [Fact]
+    public void Test_DeleteSingleVenueInDatabase()
     {
         Venue newVenue1 = new Venue("Wonder Ballroom");
         Venue newVenue2 = new Venue("Hawthorne Theater");
@@ -80,9 +81,27 @@ namespace BandTracker.Tests
         Assert.Equal(expectedResult, actualResult);
     }
 
+    [Fact]
+    public void Test_RetrievesBandsFromVenue()
+    {
+        Venue testVenue = new Venue("Roseland Theater");
+        testVenue.Save();
+        Band testBand1 = new Band("Black Dahlia Murder");
+        testBand1.Save();
+        Band testBand2 = new Band("Necrophagist");
+        testBand2.Save();
+        testVenue.AddBand(testBand1);
+        testVenue.AddBand(testBand2);
+        List<Band> expected = new List<Band> { testBand1, testBand2 };
+        List<Band> actual = testVenue.GetBands();
+
+        Assert.Equal(expected, actual);
+    }
+
     public void Dispose()
     {
         Venue.DeleteAll();
+        Band.DeleteAll();
     }
   }
 }
