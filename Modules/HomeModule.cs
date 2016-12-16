@@ -106,18 +106,39 @@ namespace BandTracker.Modules
           return View["venue_details.cshtml", myDict];
       };
 
-      Get["venue/delete"] = _ =>
+      Get["/venue/delete"] = _ =>
       {
           List<Venue> allVenues = Venue.GetAll();
           return View["delete_venue.cshtml", allVenues];
       };
 
-      Delete["venue/delete"] = _ =>
+      Post["/venue/delete/{id}"] = parameters =>
+      {
+          Venue.Delete(parameters.id);
+          List<Venue> allVenues = Venue.GetAll();
+          return View["view_venues.cshtml", allVenues];
+      };
+
+      Delete["/venue/delete"] = _ =>
       {
           int selectedId = Request.Form["delete-venue"];
           Venue.Delete(selectedId);
           List<Venue> allVenues = Venue.GetAll();
           return View["delete_venue.cshtml", allVenues];
+      };
+
+      Get["/venue/edit/{id}"] = parameters =>
+      {
+          Venue selectedVenue = Venue.Find(parameters.id);
+          return View["edit_venue.cshtml", selectedVenue];
+      };
+
+      Patch["/venue/edit/{id}"] = parameters =>
+      {
+          Venue selectedVenue = Venue.Find(parameters.id);
+          selectedVenue.Update(Request.Form["edit-venue"]);
+          List<Venue> allVenues = Venue.GetAll();
+          return View["view_venues.cshtml", allVenues];
       };
     }
   }

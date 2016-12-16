@@ -1,0 +1,13 @@
+@{
+  Layout="Shared/_Layout.cshtml";
+}
+
+<h3>Edit @Model.Name</h3>
+
+<form action="/venue/edit/@Model.Id" method="post">
+    <input type="hidden" name="_method" value="PATCH">
+    <input type="text" name="edit-venue" placeholder="Enter venue name" required>
+    <button type="submit" name="button">Submit</button>
+</form>
+
+<a href="/">Return to home</a>
