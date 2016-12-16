@@ -4,17 +4,20 @@
 
 <h3>Add new Band:</h3>
 
-<form action="/band/add" method="post">
-    <label>Enter band name:</label>
-    <input type="text" name="new-band" required>
-    <label>Select a venue:</label>
-    <select name="new-venue">
-        @foreach (var venue in Model)
-        {
-            <option value=@venue.Id>@venue.Name</option>
-        }
-    </select>
-    <button type="submit" name="button">Submit</button>
-</form>
+<div class="well white">
+    <form action="/band/add" method="post">
+        <label>Enter band name:</label>
+        <input type="text" name="new-band" required>
+        <hr>
+        <label>Select a venue:</label>
+        <select name="new-venue">
+            @foreach (var venue in Model)
+            {
+                <option value=@venue.Id>@venue.Name</option>
+            }
+        </select>
+        <button type="submit" name="button">Submit</button>
+    </form>
+</div>
 
-<a href="/">Return to home</a>
+<a class="grey" href="/">Return to home</a>

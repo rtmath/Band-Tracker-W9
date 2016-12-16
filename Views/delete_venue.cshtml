@@ -2,17 +2,19 @@
   Layout="Shared/_Layout.cshtml";
 }
 
-<h3>Here the venues you have entered:</h3>
+<h3>Here are the venues you have entered:</h3>
 
-<form action='/venue/delete' method="post">
-    <input type="hidden" name="_method" value="DELETE">
-    <select name="delete-venue">
-        @foreach (var venue in Model)
-        {
-            <option value=@venue.Id>@venue.Name</option>
-        }
-    </select>
-    <button type="submit" name="button">Delete Venue</button>
-</form>
+<div class="well">
+    <form action='/venue/delete' method="post">
+        <input type="hidden" name="_method" value="DELETE">
+        <select name="delete-venue">
+            @foreach (var venue in Model)
+            {
+                <option value=@venue.Id>@venue.Name</option>
+            }
+        </select>
+        <button type="submit" name="button">Delete Venue</button>
+    </form>
+</div>
 
-<a href="/">Return to home</a>
+<a class="grey" href="/">Return to home</a>

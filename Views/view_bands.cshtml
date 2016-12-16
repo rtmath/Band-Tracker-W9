@@ -7,7 +7,7 @@
 @foreach (var band in Model)
 {
     <li>
-        <div class="row well">
+        <div class="row well white">
             <div class="">
                 <h4><a href="/band/@band.Id">@band.Name </a></h4>
             </div>
@@ -16,11 +16,14 @@
                     <a href="/band/add/venue/@band.Id">Add a Venue to this Band's show history</a>
                 </div>
                 <div class="col-md-6">
-                    <a href="">Delete this band</a>
+                    <form action="/band/delete/@band.Id" method="post">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <button type="submit" class="link-button">Delete this Band</button>
+                    </form>
                 </div>
             </div>
         </div>
     </li>
 }
 
-<a href="/">Return to home</a>
+<a class="grey" href="/">Return to home</a>

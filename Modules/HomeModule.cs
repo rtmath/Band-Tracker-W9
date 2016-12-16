@@ -143,6 +143,13 @@ namespace BandTracker.Modules
           List<Venue> allVenues = Venue.GetAll();
           return View["view_venues.cshtml", allVenues];
       };
+
+      Delete["/band/delete/{id}"] = parameters =>
+      {
+          Band.Delete(parameters.id);
+          List<Band> allBands = Band.GetAll();
+          return View["view_bands.cshtml", allBands];
+      };
     }
   }
 }

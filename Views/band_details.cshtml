@@ -4,6 +4,8 @@
 
 <h2>@Model["band"].Name</h2>
 
+<div class="well white">
+
 <h4>@Model["band"].Name has played at the following venues:</h4>
 @foreach (var venue in Model["venues"])
 {
@@ -12,5 +14,6 @@
 
 <br>
 <a href='/band/add/venue/@Model["band"].Id'>Add a Venue to this Band's show history</a>
+</div>
 <br>
-<a href="/">Return to home</a>
+<a class="grey" href="/">Return to home</a>

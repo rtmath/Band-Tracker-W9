@@ -4,9 +4,13 @@
 
 <h3>Add new Venue:</h3>
 
-<form action="/venue/add" method="post">
-    <input type="text" name="new-venue" placeholder="Enter venue name" required>
-    <button type="submit" name="button">Submit</button>
-</form>
 
-<a href="/">Return to home</a>
+<div class="well white">
+    <form action="/venue/add" method="post">
+        <label>Enter venue name:</label>
+        <input type="text" name="new-venue" required>
+        <button type="submit" name="button">Submit</button>
+    </form>
+</div>
+
+<a class="grey" href="/">Return to home</a>

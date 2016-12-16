@@ -4,10 +4,15 @@
 
 <h3>Edit @Model.Name</h3>
 
+<div class="well white">
+
 <form action="/venue/edit/@Model.Id" method="post">
     <input type="hidden" name="_method" value="PATCH">
-    <input type="text" name="edit-venue" placeholder="Enter venue name" required>
+    <label>Enter venue name here:</label>
+    <input type="text" name="edit-venue" required>
     <button type="submit" name="button">Submit</button>
 </form>
 
-<a href="/">Return to home</a>
+</div>
+
+<a class="grey" href="/">Return to home</a>
