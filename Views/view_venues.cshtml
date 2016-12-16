@@ -7,10 +7,23 @@
 @foreach (var venue in Model)
 {
     <li>
-    <a href="/venue/@venue.Id">@venue.Name</a>
-    <a href="/venue/edit/@venue.Id">Edit this venue</a>
-    <a href="/venue/add/band/@venue.Id">Add a Band to this Venue's show history</a>
-    <a href="venue/delete/@venue.Id">Delete this venue</a></li>
+        <div class="row well">
+            <div class="">
+                <h4><a href="/venue/@venue.Id">@venue.Name</a></h4>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <a href="/venue/add/band/@venue.Id">Add Band to Venue history</a>
+                </div>
+                <div class="col-md-4">
+                    <a href="/venue/edit/@venue.Id">Edit this venue</a>
+                </div>
+                <div class="col-md-4">
+                    <a href="venue/delete/@venue.Id">Delete this venue</a>
+                </div>
+            </div>
+        </div>
+    </li>
 }
 
 <a href="/">Return to home</a>

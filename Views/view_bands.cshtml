@@ -6,7 +6,21 @@
 
 @foreach (var band in Model)
 {
-    <li><a href="/band/@band.Id">@band.Name <a href="/band/add/venue/@band.Id">Add a Venue to this Band's show history</a> <a href="">Delete this band</a></li>
+    <li>
+        <div class="row well">
+            <div class="">
+                <h4><a href="/band/@band.Id">@band.Name </a></h4>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <a href="/band/add/venue/@band.Id">Add a Venue to this Band's show history</a>
+                </div>
+                <div class="col-md-6">
+                    <a href="">Delete this band</a>
+                </div>
+            </div>
+        </div>
+    </li>
 }
 
 <a href="/">Return to home</a>

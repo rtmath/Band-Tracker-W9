@@ -1,15 +1,47 @@
-/* Uncomment for sample header styling*/
-/*div#header {
-    top:0px;
-    left:0px;
-    width:100%;
+body {
+    background-color: black;
+}
+
+input {
+    background-color: black;
+}
+
+select {
+    background-color: black;
+}
+
+button {
+    color: black;
+}
+
+li {
+    list-style-type: none;
+}
+
+#background-picture {
+    height: 100vh;
+    background-color: black;
+    background-image: url("/Content/img/bg.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.well {
     color: white;
-    background: linear-gradient(
-      to right,
-      transparent,
-      transparent,
-      black, black, black,
-      transparent,
-      transparent);
-    padding:8px;
-}*/
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+    margin-left: 20vw;
+    margin-right: 20vw;
+    background: linear-gradient(rgba(0,0,0,0.2), rgba(0, 0, 0, 0.4), rgba(0,0,0,0.2));
+}
+
+.well a {
+    color: white;
+}
+
+.margin {
+    margin-left: 10px;
+    margin-right: 10px;
+}
