@@ -20,6 +20,15 @@ namespace BandTracker.Tests
       Assert.Equal(0, Venue.GetAll().Count);
     }
 
+    [Fact]
+    public void Test_Equals_ComparesTwoObjects()
+    {
+      Venue testVenue = new Venue("Hawthorne Theater");
+      Venue testVenue2 = new Venue("Hawthorne Theater");
+
+      Assert.Equal(testVenue, testVenue2);
+    }
+
     public void Dispose()
     {
 
