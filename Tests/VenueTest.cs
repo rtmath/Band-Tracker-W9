@@ -65,6 +65,21 @@ namespace BandTracker.Tests
         Assert.Equal(newName, result);
     }
 
+    [Fact]public void Test_DeleteSingleVenueInDatabase()
+    {
+        Venue newVenue1 = new Venue("Wonder Ballroom");
+        Venue newVenue2 = new Venue("Hawthorne Theater");
+        newVenue1.Save();
+        newVenue2.Save();
+
+        Venue.Delete(newVenue1.Id);
+
+        List<Venue> expectedResult = new List<Venue>{newVenue2};
+        List<Venue> actualResult = Venue.GetAll();
+
+        Assert.Equal(expectedResult, actualResult);
+    }
+
     public void Dispose()
     {
         Venue.DeleteAll();
