@@ -46,7 +46,7 @@ To Run the Unit Tests for this Program (after following the above instructions):
 I have also included the SQL scripts for this project (located in /SQL Scripts), which you can import in SSMS by doing the following:
   * Select _File > Open > File_ and select the .sql File
   * If you haven't already created the database, add the following code to the top of the script file:
-      * CREATE DATABASE band_tracker
+      * CREATE DATABASE band_tracker (or band_tracker_test if you are using the test schema)
       * GO
   * Click _'Execute'_ and enjoy!
 
