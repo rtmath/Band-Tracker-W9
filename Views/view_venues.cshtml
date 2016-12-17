@@ -2,28 +2,39 @@
   Layout="Shared/_Layout.cshtml";
 }
 
-<h3>Here the venues you have created:</h3>
-
-@foreach (var venue in Model)
+@if (Model.Count < 1)
 {
-    <li>
-        <div class="row well white">
-            <div class="">
-                <h4><a href="/venue/@venue.Id">@venue.Name</a></h4>
+    <h3>You haven't entered any venues yet!</h3>
+}
+
+@if (Model.Count > 0)
+{
+    <h3>Here the venues you have created:</h3>
+
+    @foreach (var venue in Model)
+    {
+        <li>
+            <div class="row well white">
+                <div class="">
+                    <h4><a href="/venue/@venue.Id">@venue.Name</a></h4>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <a href="/venue/add/band/@venue.Id">Add Band to Venue history</a>
+                    </div>
+                    <div class="col-md-4">
+                        <a href="/venue/edit/@venue.Id">Edit this venue</a>
+                    </div>
+                    <div class="col-md-4">
+                        <form action="/venue/delete/@venue.Id" method="post">
+                            <input type="hidden" name="_method" value="DELETE">
+                            <button type="submit" class="link-button">Delete this Venue</button>
+                        </form>
+                    </div>
+                </div>
             </div>
-            <div class="row">
-                <div class="col-md-4">
-                    <a href="/venue/add/band/@venue.Id">Add Band to Venue history</a>
-                </div>
-                <div class="col-md-4">
-                    <a href="/venue/edit/@venue.Id">Edit this venue</a>
-                </div>
-                <div class="col-md-4">
-                    <a href="venue/delete/@venue.Id">Delete this venue</a>
-                </div>
-            </div>
-        </div>
-    </li>
+        </li>
+    }
 }
 
 <a class="grey" href="/">Return to home</a>

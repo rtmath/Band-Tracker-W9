@@ -2,16 +2,23 @@
   Layout="Shared/_Layout.cshtml";
 }
 
-<h3>Assign a venue to @Model["band"].Name:</h3>
+@if (Model["venues"].Count < 1)
+{
+    <h3>You need to create a venue first!</h3>
+}
 
-<form action='/band/add/venue/@Model["band"].Id' method="post">
-    <select name="new-venue">
-        @foreach (var venue in Model["venues"])
-        {
-            <option value=@venue.Id>@venue.Name</option>
-        }
-    </select>
-    <button type="submit" name="button">Select Venue</button>
-</form>
+@if (Model["venues"].Count > 0)
+{
+    <h3>Assign a venue to @Model["band"].Name:</h3>
 
+    <form action='/band/add/venue/@Model["band"].Id' method="post">
+        <select name="new-venue">
+            @foreach (var venue in Model["venues"])
+            {
+                <option value=@venue.Id>@venue.Name</option>
+            }
+        </select>
+        <button type="submit" name="button">Select Venue</button>
+    </form>
+}
 <a class="grey" href="/">Return to home</a>

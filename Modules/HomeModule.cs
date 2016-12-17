@@ -115,7 +115,7 @@ namespace BandTracker.Modules
           return View["delete_venue.cshtml", allVenues];
       };
 
-      Post["/venue/delete/{id}"] = parameters =>
+      Delete["/venue/delete/{id}"] = parameters =>
       {
           Venue.Delete(parameters.id);
           List<Venue> allVenues = Venue.GetAll();
